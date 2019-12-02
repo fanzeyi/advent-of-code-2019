@@ -1,5 +1,5 @@
 (* Part 1 *)
-let fuel_ mass = (float_of_int mass /. 3.0 |> floor |> int_of_float) - 2
+let fuel_ mass = (mass / 3) - 2
 
 (* Part 2 *)
 let rec fuel mass =
