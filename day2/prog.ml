@@ -29,16 +29,11 @@ let read_input () =
 
 let rec find_ state noun verb =
   let new_state = Array.copy state in
-  let result =
-    new_state.(1) <- noun ;
-    new_state.(2) <- verb ;
-    match execute new_state with
-    | Some (c, _) -> if c.(0) = 19690720 then Some (noun, verb) else None
-    | None -> None
-  in
-  match result with
-  | Some x -> Some x
-  | None ->
+  new_state.(1) <- noun ;
+  new_state.(2) <- verb ;
+  match execute new_state with
+  | Some (c, _) when c.(0) = 19690720 -> Some (noun, verb)
+  | _ ->
       if verb >= 100 then find_ state (noun + 1) 0
       else find_ state noun (verb + 1)
 
