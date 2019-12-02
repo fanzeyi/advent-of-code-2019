@@ -1,4 +1,10 @@
-let fuel mass = (float_of_int mass /. 3.0 |> floor |> int_of_float) - 2
+(* Part 1 *)
+let fuel_ mass = (float_of_int mass /. 3.0 |> floor |> int_of_float) - 2
+
+(* Part 2 *)
+let rec fuel mass =
+  let addition = fuel_ mass in
+  if addition <= 0 then 0 else addition + fuel addition
 
 let line_stream_of_channel channel =
   Stream.from (fun _ ->
@@ -12,5 +18,3 @@ let main =
 
 ;;
 main
-
-(*line_stream_of_channel stdin |> List.iter print_endline*)
