@@ -1,0 +1,4 @@
+(executable
+ (name prog)
+ (libraries batteries)
+ (modules prog))
