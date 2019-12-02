@@ -1,0 +1,15 @@
+Name: AoC_2019
+Version: 0.2019
+Synopsis: Advent of Code 2019
+Authors: Zeyi Fan <github@zeyi.fan>
+License: MIT
+
+OASISFormat: 0.4
+BuildTools: ocamlbuild
+Plugins: META (0.4), DevFiles (0.4)
+
+Executable "day1_fuel"
+  Path: day1/
+  MainIs: fuel.ml
+  BuildDepends:
+    batteries

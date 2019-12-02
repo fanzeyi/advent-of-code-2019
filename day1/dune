@@ -1,0 +1,4 @@
+(executable
+ (name fuel)
+ (libraries batteries)
+ (modules fuel))
