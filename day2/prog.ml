@@ -27,10 +27,35 @@ let read_input () =
   read_line () |> String.split_on_char ',' |> List.map int_of_string
   |> Array.of_list
 
-let main =
-  match execute (read_input ()) with
+let rec find_ state noun verb =
+  let new_state = Array.copy state in
+  let result =
+    new_state.(1) <- noun ;
+    new_state.(2) <- verb ;
+    match execute new_state with
+    | Some (c, _) -> if c.(0) = 19690720 then Some (noun, verb) else None
+    | None -> None
+  in
+  match result with
+  | Some x -> Some x
+  | None ->
+      if verb >= 100 then find_ state (noun + 1) 0
+      else find_ state noun (verb + 1)
+
+let find state = find_ state 0 0
+
+(* Part 1 *)
+let main_execute () =
+  let initial_state = read_input () in
+  match execute initial_state with
   | Some (c, _) -> Array.iter (fun num -> string_of_int num |> print_endline) c
   | None -> ()
 
+(* Part 2 *)
+let main () =
+  match find (read_input ()) with
+  | Some (noun, verb) -> Printf.printf "result: noun: %d verb: %d\n" noun verb
+  | None -> Printf.printf "not found\n"
+
 ;;
-main
+main ()
