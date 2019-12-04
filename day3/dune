@@ -1,0 +1,4 @@
+(executable
+ (name intersect)
+ (libraries batteries)
+ (modules intersect))
